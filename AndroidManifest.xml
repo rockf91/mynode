@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cc.thedream.snh"
+    android:installLocation="auto"
+    android:theme="@android:style/Theme.NoTitleBar"
+    android:versionCode="1"
+    android:versionName="1.0">
+
+    <permission
+      android:name="cc.thedream.snh.permission.JPUSH_MESSAGE"
+      android:protectionLevel="signature"/>
+
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="19" />
+    <uses-feature android:name="android.hardware.camera" />
+    <supports-screens
+        android:smallScreens="true"
+        android:normalScreens="true"
+        android:largeScreens="true"
+        android:xlargeScreens="true"
+        android:anyDensity="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <!-- 需要短信支付才配置 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- 接收短信的权限，用于显示 支付宝、财付通 的验证码短信，可选 -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <!-- Required  一些系统要求的权限，如访问网络等-->
+    <uses-permission android:name="cc.thedream.snh.permission.JPUSH_MESSAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    
+    <!-- Optional for location -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+
+	<!--android:name="com.thedream.snh.GameApplication"-->
+    
+    <application
+        android:icon="@drawable/app_icon"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+        android:debuggable="false">
+
+        <!-- QuicKSDK Activity-->
+        <!-->
+        <activity
+            android:name="com.thedream.snh.SplashActivity"
+            android:configChanges="mnc|keyboardHidden|screenSize|orientation|keyboard"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        -->
+
+        <!-->
+        <activity
+            android:name="com.thedream.snh.MainActivity"
+            android:configChanges="mnc|keyboardHidden|screenSize|orientation|keyboard"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            <meta-data
+                android:name="unityplayer.ForwardNativeEventsToDalvik"
+                android:value="true" />
+            <meta-data
+                android:name="unityplayer.UnityActivity"
+                android:value="true" />
+        </activity> 
+        -->
+
+        <!--DreamSDK Activity-->
+        <activity android:name="com.unity3d.player.UnityPlayerNativeActivity"
+                  android:screenOrientation="landscape"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+            <meta-data android:name="unityplayer.ForwardNativeEventsToDalvik" android:value="false" />
+        </activity>
+
+        <!-- Hero Assistant SDK Begin -->
+        <!-- 添加与官方助手沟通的媒介 -->
+        <!--
+        <service android:name="org.jar.bloc.BaseService">
+            <intent-filter>
+                <action android:name="org.jar.league.uc.game" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.jar.league.uc.game.ca" />
+            </intent-filter>
+
+            <meta-data
+                android:name="bloc_base_servive"
+                android:value="@string/bloc_base_servive_value" />
+        </service>
+        -->
+
+        <!-- 添加与官方助手所需的窗体 -->
+        <!--
+        <activity
+            android:name="org.jar.bloc.BlocActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        -->    
+  
+        <!-- 添加官方助手基本窗体 -->
+        <!--
+        <activity
+            android:name="org.jar.bloc.usercenter.general.UserCenterActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
+        -->
+
+        <!--微信分享配置-->
+        <!--微信回掉结果的接收页面-->
+        <!--
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sdksample" />
+            </intent-filter>
+        </activity>
+        -->
+
+        <!-- 注册微信的广播 -->
+        <!--
+        <receiver
+            android:name="org.jar.bloc.third.wxapi.AppRegister"
+            android:permission="com.tencent.mm.plugin.permission.SEND">
+            <intent-filter>
+                <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP" />
+            </intent-filter>
+        </receiver>
+        -->
+        
+        <!--QQ分享配置-->
+        <activity
+            android:name="com.tencent.open.yyb.AppbarActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="com.tencent.connect.avatar.ImageActivity" />
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1105811177" />
+                <!-- 100380359 100381104 222222 -->
+            </intent-filter>
+        </activity>
+
+        <!--新浪微博分享配置-->
+        <!-- 必须注册在微博授权，分享微博时候用到 -->
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <!-- 手机短信注册页面 -->
+        <activity
+            android:name="com.sina.weibo.sdk.register.mobile.MobileRegisterActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" /> 
+        <!-- 注册选择国家页面 -->
+        <activity
+            android:name="com.sina.weibo.sdk.register.mobile.SelectCountryActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <service
+            android:name="com.sina.weibo.sdk.net.DownloadService"
+            android:exported="false" />   
+
+        <!--新浪回掉结果的接收页面v2.5.2新加-->
+        <activity
+            android:name="org.jar.bloc.third.sina.BlocWBShareResponseActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateAlwaysHidden">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_RESP_ACTIVITY" />
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>    
+        <!-- Hero Assistant SDK End -->
+
+        <meta-data android:name="com.talkingdata.KEY"
+                   android:value="405E66A7BCA1469896EE87E1DBF04CEB"/>
+        <meta-data android:name="com.reyunchannel.KEY"
+                   android:value="fb9cc4a76aeb74e80925b30e111b0a1f"/>
+        <meta-data android:name="com.reyunchannel.CKEY" android:value="_default_"/>
+
+        <activity android:name="com.unity3d.player.VideoPlayer"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  android:configChanges="fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen">
+        </activity>
+
+                
+    <!--TDreamMSDK BEGIN-->    
+    <activity
+      android:name="com.thedream.msdk.member.activity.AssistActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:launchMode="singleTask"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen">
+    </activity>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.LaunchActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:launchMode="singleTask"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen">
+    </activity>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.LoginActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:launchMode="singleTask"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen">
+    </activity>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.PhoneRegisterActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:exported="false"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen"/>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.UsernameRegisterActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:exported="false"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen"/>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.FindPasswordActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:exported="false"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen"/>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.FindAccountActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:exported="false"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen"/>
+
+    <activity
+      android:name="com.thedream.msdk.member.activity.ChangePasswordActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:exported="false"
+      android:screenOrientation="landscape"
+      android:theme="@style/td_dialog_style_fullscreen"/>
+
+    <activity
+      android:name="com.thedream.msdk.billing.activity.PayCenterActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:launchMode="singleTop"
+      android:screenOrientation="behind"
+      android:theme="@style/td_dialog_style_fullscreen">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW"/>
+        <category android:name="android.intent.category.DEFAULT"/>
+        <data android:scheme="wx2afa4df3fbc4551d"/>
+      </intent-filter>
+    </activity>
+
+    <activity
+      android:name="com.thedream.msdk.billing.activity.ShengftPayActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:screenOrientation="behind"
+      android:exported="false"/>
+
+    <activity
+      android:name="com.thedream.msdk.billing.activity.TencentPayActivity"
+      android:configChanges="orientation|navigation|screenSize|keyboard|keyboardHidden"
+      android:excludeFromRecents="true"
+      android:screenOrientation="behind"
+      android:exported="false"/>
+
+    <!--<service-->
+    <!--android:name="com.thedream.msdk.member.toolbar.FloatWindowService"-->
+    <!--android:exported="false"/>-->
+
+    <!--TDreamMSDK BEGIN-->
+
+    <!-- AliPay SDK BEGIN -->
+
+    <activity
+      android:name="com.alipay.sdk.app.H5PayActivity"
+      android:configChanges="orientation|keyboardHidden|navigation"
+      android:exported="false"
+      android:screenOrientation="behind">
+    </activity>
+
+    <activity
+      android:name="com.alipay.sdk.auth.AuthActivity"
+      android:configChanges="orientation|keyboardHidden|navigation"
+      android:exported="false"
+      android:screenOrientation="behind">
+    </activity>
+
+    <!-- AliPay SDK END -->
+
+    <!-- WeiXinPay SDK BEGIN -->
+    <activity
+      android:name="cc.thedream.snh.wxapi.WXEntryActivity"
+      android:exported="true"
+      android:launchMode="singleTop"
+      android:screenOrientation="behind"/>
+
+     <activity
+      android:name="cc.thedream.snh.wxapi.WXPayEntryActivity"
+      android:exported="true"
+      android:launchMode="singleTop"
+      android:screenOrientation="behind"/>
+
+    <receiver
+      android:name="com.thedream.msdk.billing.services.WXPayBroadcastReceiver">
+      <intent-filter>
+        <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"/>
+      </intent-filter>
+    </receiver>
+    <!-- WeiXinPay SDK END -->
+
+        <!-- JPUSH CONFIG -->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+          <intent-filter>
+            <action android:name="cn.jpush.android.ui.PushActivity"/>
+    
+            <category android:name="android.intent.category.DEFAULT"/>
+            <category android:name="cc.thedream.snh"/>
+          </intent-filter>
+        </activity>
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+          <intent-filter>
+            <action android:name="cn.jpush.android.intent.DaemonService" />
+            <category android:name="cc.thedream.snh" />
+          </intent-filter>
+        </service>
+    
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+    
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false">
+          <intent-filter>
+            <action android:name="cn.jpush.android.intent.REGISTER"/>
+            <action android:name="cn.jpush.android.intent.REPORT"/>
+            <action android:name="cn.jpush.android.intent.PushService"/>
+            <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+    
+          </intent-filter>
+        </service>
+    
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true">
+          <intent-filter android:priority="1000">
+            <!-- Required. 显示通知栏 -->
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+            <category android:name="cc.thedream.snh"/>
+          </intent-filter>
+          <intent-filter>
+            <action android:name="android.intent.action.USER_PRESENT"/>
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+          </intent-filter>
+          <!-- Optional -->
+          <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_ADDED"/>
+            <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+    
+            <data android:scheme="package"/>
+          </intent-filter>
+    
+        </receiver>
+    
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>
+    
+        <!-- Rich push 核心功能 since 2.0.6 -->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle">
+        </activity>
+    
+        <receiver
+            android:name="cn.jiguang.unity.push.MyReceiver"
+            android:enabled="true">
+          <intent-filter>
+            <!-- Required. 用户注册 SDK 的 intent -->
+            <action android:name="cn.jpush.android.intent.REGISTRATION"/>
+            <action android:name="cn.jpush.android.intent.UNREGISTRATION"/>
+            <!-- Required. 用户接收 SDK 消息的 intent -->
+            <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
+            <!-- Required. 用户接收 SDK 通知栏信息的 intent -->
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
+            <!-- Required. 用户打开自定义通知栏的 intent -->
+            <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+            <!-- Optional. 用户接受Rich Push Javascript 回调函数的 intent -->
+            <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK"/>
+            <category android:name="cc.thedream.snh"/>
+          </intent-filter>
+        </receiver>
+    
+        <receiver android:name="cn.jiguang.unity.push.JPushEventReceiver">
+          <intent-filter>
+            <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+            <category android:name="cc.thedream.snh"></category>
+          </intent-filter>
+        </receiver>
+    
+        <!-- since 3.0.9 Required SDK 核心功能-->
+        <provider 
+          android:authorities="cc.thedream.snh.DataProvider" 
+          android:name="cn.jpush.android.service.DataProvider" 
+          android:exported="true" />
+    
+        <!-- Required. Enable it you can get statistics data with channel. -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default"/>
+    
+        <!-- 值来自开发者平台取得的 AppKey-->
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="a4402269f44578b2948612cd"/>
+        <!-- JPUSH CONFIG END -->
+
+        <!--
+            To support devices using the TI S3D library for stereo mode we must 
+            add the following library.
+            Devices that require this are: ODG X6 
+        -->
+        <uses-library android:name="com.ti.s3d" android:required="false" />
+        <!--
+            To support the ODG R7 in stereo mode we must add the following library.
+        -->
+        <uses-library android:name="com.osterhoutgroup.api.ext" android:required="false" />
+    </application>
+</manifest>
+
+<!-- android:installLocation="preferExternal" -->
